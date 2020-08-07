@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<button onclick="getTestList()">값 가져오기</button>
+<script>
+function getTestList() {
+    var xhr = new XMLHttpRequest(); // readystate = 0
+
+    xhr.open("GET", "/test?list=true"); // readystate = 1
+
+    xhr.onreadystatechange = function() {
+       if (xhr.readyState == 4) {
+
+          var strs = JSON.parse(xhr.responseText);
+          for(i=0;i<strs.length;i++){
+             alert(strs[i]);
+          }
+       }
+    }
+    xhr.send();
+ }
+
+</script>
+</body>
+</html>
